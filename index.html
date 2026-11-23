@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy 3rd Anniversary, Anna &amp; Anni ❤️</title>
+  <meta name="description" content="A little surprise for Anna and Anni on their 3rd wedding anniversary — made with love.">
+  <meta name="theme-color" content="#090A12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'%3E%3Cpath fill='%23D6B46A' d='M50 85C10 55 0 30 20 14 34 3 46 10 50 22 54 10 66 3 80 14 100 30 90 55 50 85Z'/%3E%3C/svg%3E">
+
+  <!-- Fonts: Playfair Display (headings), Cormorant Garamond (romantic), Poppins (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.loader{display:none}.reveal,.tile{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
+</head>
+
+<body class="is-locked">
+
+  <!-- Shared SVG definitions: gradients + heart symbol -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFF3C9"/><stop offset=".45" stop-color="#F5D98B"/><stop offset="1" stop-color="#B98B3E"/>
+      </linearGradient>
+      <linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#FFE6DA"/><stop offset=".5" stop-color="#E9AAB6"/><stop offset="1" stop-color="#C77C8E"/>
+      </linearGradient>
+      <symbol id="heart" viewBox="0 0 100 90"><path d="M50 85C10 55 0 30 20 14 34 3 46 10 50 22 54 10 66 3 80 14 100 30 90 55 50 85Z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Ambient particles (behind content) and burst/fireworks layer (above content) -->
+  <canvas id="ambient" aria-hidden="true"></canvas>
+  <canvas id="burst" aria-hidden="true"></canvas>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader" class="loader" role="status" aria-live="polite">
+    <svg class="loader__heart" viewBox="0 0 100 90" aria-hidden="true"><path d="M50 85C10 55 0 30 20 14 34 3 46 10 50 22 54 10 66 3 80 14 100 30 90 55 50 85Z"/></svg>
+    <p class="loader__text">Preparing something special…</p>
+  </div>
+
+  <!-- ===== 3. INTRO – THE SECRET SURPRISE ===== -->
+  <section id="intro" class="intro" aria-label="Surprise opening">
+    <div class="intro__rays" aria-hidden="true"></div>
+
+    <div class="intro__content">
+      <span class="orn" aria-hidden="true">✦</span>
+      <h1 class="intro__title gold-text">Something Special Is Waiting For You...</h1>
+      <p class="romantic intro__sub">Three Years of Love. A Lifetime of Togetherness.</p>
+      <button id="openBtn" class="btn btn--primary" type="button"><span>Open Your Surprise <span class="emoji">❤️</span></span></button>
+      <button id="skipIntroBtn" class="link-btn" type="button">Skip animation</button>
+    </div>
+
+    <!-- Cinematic opening overlay (shown after tapping the button) -->
+    <div id="opening" class="opening" aria-hidden="true">
+      <div class="opening__flare"></div>
+      <svg class="opening__heart" viewBox="0 0 100 90" aria-hidden="true"><use href="#heart" fill="url(#gGold)"/></svg>
+      <button id="skipOpeningBtn" class="link-btn opening__skip" type="button">Skip ›</button>
+    </div>
+  </section>
+
+  <!-- ===== MAIN EXPERIENCE ===== -->
+  <main id="experience" class="experience" hidden>
+
+    <!-- ===== 4. HERO ===== -->
+    <section id="hero" class="section hero">
+      <p class="hero__kicker gold-text reveal" style="--d:.1s">Happy 3rd Wedding Anniversary</p>
+      <h2 class="hero__title gold-text reveal" style="--d:.35s">My Dearest Anna &amp; Anni <span class="emoji">❤️</span></h2>
+      <p class="romantic reveal" style="--d:.6s">“Three beautiful years of love, countless memories and a lifetime of dreams yet to come.”</p>
+
+      <div class="portrait reveal" style="--d:.8s" data-parallax="-0.05" id="portrait">
+        <div class="portrait__halo"></div>
+        <div class="portrait__frame">
+          <img src="assets/images/couple-portrait.jpg" alt="Anna and Anni smiling together" width="480" height="484" fetchpriority="high">
+        </div>
+        <div class="portrait__ring"></div>
+      </div>
+
+      <p class="blessing reveal" style="--d:1s">May your love grow stronger, your happiness shine brighter, and your journey together become more beautiful with every passing year.</p>
+
+      <div class="counter glass reveal" style="--d:1.2s" id="counter">
+        <div class="counter__item"><span class="counter__num gold-text" data-count="3">0</span><span class="counter__label">Years</span></div>
+        <div class="counter__item"><span class="counter__num gold-text" data-count="36">0</span><span class="counter__label">Months</span></div>
+        <div class="counter__item"><span class="counter__num gold-text">∞</span><span class="counter__label">A Lifetime<br>of Love</span></div>
+      </div>
+      <p class="day-counter" id="dayCounter" hidden></p>
+
+      <a class="scroll-hint" href="#gallery" aria-label="Scroll to memories"><span></span></a>
+    </section>
+
+    <!-- ===== 5. GALLERY ===== -->
+    <section id="gallery" class="section gallery">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow reveal">Our Beautiful Memories</p>
+          <h2 class="section__title gold-text reveal" style="--d:.1s">Every picture holds a beautiful memory.</h2>
+          <p class="romantic reveal" style="--d:.2s">Tap a moment to relive it ✨</p>
+        </header>
+
+        <div class="masonry" id="masonry">
+          <figure class="tile">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni at the red church in Melaka">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/memory-4.jpg" alt="Anna and Anni embracing in front of the red church in Melaka" loading="lazy" decoding="async" width="716" height="715"></span></span>
+            </button>
+            <figcaption>Every smile tells a story.</figcaption>
+          </figure>
+
+          <figure class="tile tile--round">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni together">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/couple-portrait.jpg" alt="Anna and Anni smiling together" loading="lazy" decoding="async" width="480" height="484"></span></span>
+            </button>
+            <figcaption>Every moment becomes precious when shared with the right person.</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni in a selfie">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/memory-1.jpg" alt="Anna and Anni in a happy selfie" loading="lazy" decoding="async" width="537" height="715"></span></span>
+            </button>
+            <figcaption>Every picture holds a beautiful memory.</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni in pink">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/memory-2.jpg" alt="Anna and Anni in matching pink outfits near the red buildings" loading="lazy" decoding="async" width="537" height="715"></span></span>
+            </button>
+            <figcaption>Every smile tells a story.</figcaption>
+          </figure>
+
+          <figure class="tile">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni side by side">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/memory-3.jpg" alt="Anna and Anni standing close, smiling for the camera" loading="lazy" decoding="async" width="537" height="715"></span></span>
+            </button>
+            <figcaption>Every moment becomes precious when shared with the right person.</figcaption>
+          </figure>
+           <figure class="tile">
+            <button class="tile__btn" type="button" aria-label="Open photo: Anna and Anni side by side">
+              <span class="tile__frame"><span class="tile__inner"><img src="assets/images/WhatsApp Image 2026-11-23 at 12.44.31 PM.png" alt="Anna and Anni standing close, smiling for the camera" loading="lazy" decoding="async" width="537" height="715"></span></span>
+            </button>
+            <figcaption> Stay blessed be happy Forever</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. TWO COUNTRIES – ONE HEART ===== -->
+    <section id="connection" class="section connection">
+      <div class="wrap wrap--narrow">
+        <header class="section__head">
+          <p class="eyebrow reveal">Two Countries – One Heart <span class="emoji">❤️</span></p>
+          <h2 class="section__title gold-text reveal" style="--d:.1s">Different Countries. Different Time Zones. But Always One Heart.</h2>
+        </header>
+
+        <div class="globe reveal" style="--d:.2s">
+          <canvas id="globe" role="img" aria-label="A softly glowing globe with a golden line and a travelling heart connecting Singapore and India"></canvas>
+        </div>
+
+        <p class="clocks reveal" id="clocks" aria-live="off">
+          <span><b>Anna</b> · Singapore <time id="clockSG">—</time></span>
+          <span><b>Anni</b> · India <time id="clockIN">—</time></span>
+        </p>
+
+        
+
+        <button id="feelBtn" class="btn btn--primary reveal" type="button"><span>Feel the Connection <span class="emoji">❤️</span></span></button>
+      </div>
+    </section>
+
+    <!-- ===== 7. THE LITTLE MIRACLE ===== -->
+    <section id="miracle" class="section miracle">
+      <div class="miracle__glow" data-parallax="0.06" aria-hidden="true"></div>
+      <div class="wrap wrap--narrow miracle__inner">
+        <p class="eyebrow reveal">The Little Miracle · A New Chapter</p>
+        <h2 class="section__title miracle__lead reveal" style="--d:.1s">Your Love Story Is About To Become Even More Beautiful...</h2>
+
+        <svg class="miracle__art reveal" id="miracleArt" viewBox="0 0 220 215" role="img" aria-label="A glowing heart above a pair of tiny baby feet" style="--d:.2s">
+          <defs>
+            <g id="foot">
+              <path d="M60 92C78 92 86 112 83 136 81 156 73 170 60 170 47 170 39 156 37 136 34 112 42 92 60 92Z"/>
+              <circle cx="76" cy="80" r="8.5"/><circle cx="62" cy="72" r="6.2"/><circle cx="50" cy="75" r="5.4"/>
+              <circle cx="40" cy="82" r="4.6"/><circle cx="33" cy="92" r="3.8"/>
+            </g>
+          </defs>
+          <g class="baby-heart"><use href="#heart" x="76" y="8" width="68" height="61" fill="url(#gGold)"/></g>
+          <g fill="url(#gRose)" stroke="rgba(255,248,237,.55)" stroke-width="1" transform="translate(0 40)">
+            <use href="#foot"/>
+            <use href="#foot" transform="translate(220 0) scale(-1 1)"/>
+          </g>
+        </svg>
+
+        <button id="revealBtn" class="btn btn--primary reveal" type="button" style="--d:.3s"><span>Tap to Reveal the Little Miracle ✨</span></button>
+
+        <div class="miracle__reveal" id="miracleReveal" hidden aria-live="polite">
+          <p class="miracle__line miracle__line--main" style="--i:0">Two Hearts Became One Family... And Now A Little Miracle Is On The Way.</p>
+          <p class="miracle__line" style="--i:1">May this beautiful new journey bring endless happiness, love and blessings.</p>
+          <p class="miracle__line" style="--i:2">Your little world is about to become even more magical.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 9. MESSAGE FROM YOUR BROTHER ===== -->
+    <section id="message" class="section message">
+      <div class="wrap wrap--narrow">
+        <header class="section__head">
+          <p class="eyebrow reveal">From My Heart To Yours</p>
+        </header>
+
+        <article class="letter glass reveal" aria-label="A message from your loving Sister">
+          <div class="letter__body" id="letter">
+            <p class="line line--title">My Dearest Anna &amp; Anni ❤️</p>
+            <p class="line line--title">Happy 3rd Wedding Anniversary!</p>
+            <p class="line">I may not always express how much I love you both, but you both mean more to me than words can ever explain.</p>
+            <p class="line">Anna, you are not just my brother. You are one of the biggest blessings in my life.</p>
+            <p class="line">Anni, you are not just my sister-in-law. You are my own sister, someone who has become such a special part of our family.</p>
+            <p class="line">Seeing you both happy together makes me genuinely happy.</p>
+            <!-- <p class="line">Even though Anna is in Singapore and Anni is in India, I wish your love always remains stronger than every distance.</p> -->
+            <p class="line">And now, a beautiful new chapter is waiting for you both. I am so excited to welcome our little miracle into this family.</p>
+            <p class="line">May your home always be filled with laughter, love, good health and endless happiness.</p>
+            <p class="line">I love you both more than I can ever express.</p>
+            <p class="line line--sign">With all my love,</p>
+            <p class="line line--sign" id="lastLine">Your Loving Sister ❤️</p>
+          </div>
+          <svg class="letter__heart" id="letterHeart" viewBox="0 0 100 90" aria-hidden="true"><use href="#heart" fill="url(#gGold)"/></svg>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 10. FINAL CELEBRATION ===== -->
+    <section id="finale" class="section finale">
+      <div class="finale__glow" data-parallax="0.05" aria-hidden="true"></div>
+      <div class="wrap wrap--narrow finale__inner">
+
+        <div class="emblem reveal" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs><path id="ringPath" d="M100 100m-80 0a80 80 0 1 1 160 0a80 80 0 1 1-160 0"/></defs>
+            <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gGold)" stroke-width="1.2"/>
+            <circle cx="100" cy="100" r="62" fill="rgba(74,23,44,.45)" stroke="url(#gGold)" stroke-width="1.2"/>
+            <g class="emblem__spin">
+              <text font-family="Poppins, sans-serif" font-size="9.5" fill="#F5D98B" letter-spacing="2"><textPath href="#ringPath" textLength="494" lengthAdjust="spacing">ANNA &amp; ANNI • THREE YEARS • FOREVER • </textPath></text>
+            </g>
+            <g fill="none" stroke="#F5D98B" stroke-width="1.4"><circle cx="93" cy="62" r="9"/><circle cx="107" cy="62" r="9"/></g>
+            <text x="100" y="122" text-anchor="middle" font-family="Playfair Display, serif" font-size="58" font-weight="600" fill="url(#gGold)">3</text>
+            <text x="100" y="142" text-anchor="middle" font-family="Poppins, sans-serif" font-size="8" letter-spacing="4" fill="#D6B46A">YEARS</text>
+          </svg>
+        </div>
+
+        <h2 class="finale__title gold-text reveal" style="--d:.15s">Happy 3rd Anniversary<br>Anna &amp; Anni <span class="emoji">❤️</span></h2>
+        <p class="romantic romantic--lg reveal" style="--d:.3s">“Three Years Down. Forever To Go.”</p>
+        <p class="romantic romantic--lg reveal" style="--d:.45s">“One Beautiful Family. One Endless Love Story.”</p>
+
+        <button id="replayBtn" class="btn btn--primary reveal" type="button" style="--d:.6s"><span>Replay Our Beautiful Story <span class="emoji">❤️</span></span></button>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb__btn lb__close" type="button" aria-label="Close photo">✕</button>
+    <button class="lb__btn lb__nav lb__prev" type="button" aria-label="Previous photo">‹</button>
+    <figure class="lb__stage">
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap" class="romantic"></figcaption>
+    </figure>
+    <button class="lb__btn lb__nav lb__next" type="button" aria-label="Next photo">›</button>
+    <p class="lb__count" id="lbCount"></p>
+  </div>
+
+  <!-- ===== 8. FLOATING MUSIC PLAYER ===== -->
+  <aside id="player" class="player glass" aria-label="Music player">
+    <div class="player__row">
+      <button id="playBtn" class="player__play" type="button" aria-label="Play music">
+        <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <button id="playerInfo" class="player__info" type="button" aria-expanded="false" aria-controls="playerPanel">
+        <span class="player__title">Un Paarvayil</span>
+        <span class="player__for">For Aji <span class="emoji">❤️</span></span>
+      </button>
+      <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <button id="muteBtn" class="player__mute" type="button" aria-label="Mute music" aria-pressed="false">
+        <svg class="ico-vol" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 4V6L7 10zM16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="ico-muted" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 4V6L7 10zM16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="player__panel" id="playerPanel">
+      <div class="player__panel-in">
+        <canvas id="viz" aria-hidden="true"></canvas>
+        <p class="player__dedication">A little melody, a thousand feelings, and endless love.</p>
+      </div>
+    </div>
+
+    <div class="player__progress">
+      <time id="tCur">0:00</time>
+      <input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek through the song">
+      <time id="tDur">0:00</time>
+    </div>
+    <p class="player__status" id="audioStatus" hidden></p>
+
+    <!-- Place your legally obtained song at assets/audio/un-paarvayil.mp3 (or .m4a / .ogg) -->
+    <audio id="song" preload="metadata" loop>
+      <source src="assets/audio/Un Per Solla - Video Song Minsara Kanna Vijay Rambha Monica Castelino Deva Sun Music.mp3" type="audio/mpeg">
+      <source src="assets/audio/Un Per Solla - Video Song Minsara Kanna Vijay Rambha Monica Castelino Deva Sun Music.mp3" type="audio/mp4">
+      <source src="assets/audio/Un Per Solla - Video Song Minsara Kanna Vijay Rambha Monica Castelino Deva Sun Music.mp3" type="audio/ogg">
+    </audio>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
